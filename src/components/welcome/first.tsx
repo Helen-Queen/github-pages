@@ -1,7 +1,9 @@
 import s from './welcome.module.scss';
-import { FunctionalComponent } from 'vue';
+import { FunctionalComponent,ref, watchEffect } from 'vue';
+import { useSwipe } from '../../hooks/useSwipe';
+import { useRouter } from 'vue-router';
 export const First: FunctionalComponent = () => {
-  return <div class={s.card}>
+  return <div class={s.card} >
     <svg>
       <use xlinkHref='#pig'></use>
     </svg>
