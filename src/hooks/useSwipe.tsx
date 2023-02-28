@@ -1,20 +1,21 @@
 import { computed, onMounted, onUnmounted, ref, Ref } from "vue";
 
-type Point = { 
+type Point = {
   x: number;
   y: number;
 }
 interface Options {
-  beforeStart?:(e:TouchEvent) => void;
-  afterStart?:(e:TouchEvent) => void;
-  beforeMove?:(e:TouchEvent) => void;
-  afterMove?:(e:TouchEvent) => void;
-  beforeEnd?:(e:TouchEvent) => void;
-  afterEnd?:(e:TouchEvent) => void;
+  beforeStart?: (e: TouchEvent) => void
+  afterStart?: (e: TouchEvent) => void
+  beforeMove?: (e: TouchEvent) => void
+  afterMove?: (e: TouchEvent) => void
+  beforeEnd?: (e: TouchEvent) => void
+  afterEnd?: (e: TouchEvent) => void
 }
-export const useSwipe = (element: Ref<HTMLElement | undefined>,options: Options) => {
-  const start = ref<Point >()
-  const end = ref<Point >()
+
+export const useSwipe = (element: Ref<HTMLElement | undefined>, options?: Options) => {
+  const start = ref<Point>()
+  const end = ref<Point>()
   const swiping = ref(false)
   const distance = computed(() => {
     if (!start.value || !end.value) { return null }
